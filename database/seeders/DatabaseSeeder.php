@@ -2,24 +2,21 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
-    use WithoutModelEvents;
-
     /**
      * Seed the application's database.
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+        // Aqui inserimos os tipos de usuário necessários para o banco não dar erro
+        DB::table('tiposusuarios')->insert([
+            ['tus_id' => 1, 'tus_nome' => 'Administrador'],
+            ['tus_id' => 2, 'tus_nome' => 'Passageiro'],
+            ['tus_id' => 3, 'tus_nome' => 'Motorista'],
         ]);
     }
 }

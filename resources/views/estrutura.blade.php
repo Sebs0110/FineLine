@@ -46,9 +46,14 @@
         </ul>
     </div>
     <!-- Conteúdo -->
+<<<<<<< HEAD
     <div class="p-4 text-white" style="flex: 1; min-height: 100vh;">
+=======
+    <div class="p-4 text-white w-100">
+>>>>>>> ce69051 (Implementação do CRUD de usuários)
         @yield('content')
     </div>
+
 </div>
 
 <script>

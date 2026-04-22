@@ -7,4 +7,12 @@ Route::get('/', function () {
     return view('estrutura');
 });
 
+<<<<<<< HEAD
 Route::resource('avisos', AvisoController::class);
+=======
+use App\Http\Controllers\UserController;
+
+//cria as 7 rotas que o usercontroller precisa
+Route::resource('usuarios', UserController::class);
+
+>>>>>>> ce69051 (Implementação do CRUD de usuários)
