@@ -45,7 +45,7 @@
                                     {{ $message }}
                                 </div>
                             @enderror
-                            <small class="text-muted d-block mt-2">
+                            <small class="text-light-gray d-block mt-2">
                                 <i class="bi bi-info-circle me-1"></i>Máximo de 255 caracteres
                             </small>
                         </div>
@@ -58,7 +58,7 @@
                             </label>
                             <input 
                                 type="date" 
-                                class="form-control @error('avi_datacadastro') is-invalid @enderror" 
+                                class="form-control @error('avi_datacadastro') is-invalid @enderror custom-date-input" 
                                 id="avi_datacadastro" 
                                 name="avi_datacadastro" 
                                 required
@@ -128,8 +128,8 @@
             }
         });
 
-        // Adicionar feedback visual de caracteres
-        $('#avi_descricao').after('<small class="text-muted d-block mt-1"><span id="charCount">0</span>/255 caracteres</small>');
+        // Adicionar feedback visual de caracteres com cor clara
+        $('#avi_descricao').after('<small class="text-light-gray d-block mt-1"><span id="charCount">0</span>/255 caracteres</small>');
         
         $('#avi_descricao').on('keyup', function(){
             $('#charCount').text($(this).val().length);
@@ -190,6 +190,17 @@
     .form-label {
         font-weight: 500;
         margin-bottom: 0.5rem;
+    }
+
+    /* Ajuste de visibilidade para textos de ajuda */
+    .text-light-gray {
+        color: #adb5bd !important;
+    }
+
+    /* Ajuste para o ícone do calendário em inputs do tipo date */
+    .custom-date-input::-webkit-calendar-picker-indicator {
+        filter: invert(1);
+        cursor: pointer;
     }
 </style>
 @endsection
