@@ -36,8 +36,7 @@
                     <li><a href="#" class="nav-link text-white"><i class="bi bi-person me-2"></i>Passageiros</a></li>
                     <li><a href="#" class="nav-link text-white"><i class="bi bi-building me-2"></i>Empresas</a></li>
                     <li><a href="#" class="nav-link text-white"><i class="bi bi-car-front me-2"></i>Motoristas</a></li>
-                    <li><a href="#" class="nav-link text-white"><i class="bi bi-bus-front me-2"></i>Ônibus</a></li>
-                    <li><a href="#" class="nav-link text-white"><i class="bi bi-sign-turn-right me-2"></i>Rotas</a></li>
+                    <li><a href="{{ route('onibus.index') }}" class="nav-link text-white"><i class="bi bi-bus-front me-2"></i>Ônibus</a></li>                    <li><a href="#" class="nav-link text-white"><i class="bi bi-sign-turn-right me-2"></i>Rotas</a></li>
                     <li><a href="#" class="nav-link text-white"><i class="bi bi-calendar-check me-2"></i>Itinerários</a></li>
                     <li><a href="/avisos/create" class="nav-link text-white" id="link-avisos-fixo"><i class="bi bi-cone-striped me-2"></i>Avisos</a></li>
                     <li><a href="#" class="nav-link text-white"><i class="bi bi-signpost me-2"></i>Paradas</a></li>
