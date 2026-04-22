@@ -16,4 +16,12 @@ export default defineConfig({
             jQuery: 'jquery',
         }),
     ],
+    css: {
+        preprocessorOptions: {
+            scss: {
+                quietDeps: true,
+                silenceDeprecations: ['import', 'global-builtin', 'color-functions', 'if-function', 'mixed-decls'],
+            },
+        },
+    },
 });
