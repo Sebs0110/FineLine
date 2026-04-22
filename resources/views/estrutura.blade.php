@@ -16,6 +16,9 @@
         .submenu.d-block {
             display: block !important;
         }
+        .nav-link {
+            cursor: pointer;
+        }
     </style>
 </head>
 <body style="background-color: #123957">
@@ -25,18 +28,18 @@
         <h3 class="text-warning">FineLine</h3>
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a href="javascript:void(0)" class="nav-link text-white menu-toggle">
+                <a href="javascript:void(0)" class="nav-link text-white menu-toggle" id="btn-cadastros">
                     <i class="bi bi-chevron-right me-1 icone"></i>Cadastros
                 </a>
 
-                <ul class="nav flex-column d-none ms-3 submenu">
+                <ul class="nav flex-column d-none ms-3 submenu" id="submenu-cadastros">
                     <li><a href="#" class="nav-link text-white"><i class="bi bi-person me-2"></i>Passageiros</a></li>
                     <li><a href="#" class="nav-link text-white"><i class="bi bi-building me-2"></i>Empresas</a></li>
                     <li><a href="#" class="nav-link text-white"><i class="bi bi-car-front me-2"></i>Motoristas</a></li>
                     <li><a href="#" class="nav-link text-white"><i class="bi bi-bus-front me-2"></i>Ônibus</a></li>
                     <li><a href="#" class="nav-link text-white"><i class="bi bi-sign-turn-right me-2"></i>Rotas</a></li>
                     <li><a href="#" class="nav-link text-white"><i class="bi bi-calendar-check me-2"></i>Itinerários</a></li>
-                    <li><a href="/avisos/create" class="nav-link text-white"><i class="bi bi-cone-striped me-2"></i>Avisos</a></li>
+                    <li><a href="/avisos/create" class="nav-link text-white" id="link-avisos-fixo"><i class="bi bi-cone-striped me-2"></i>Avisos</a></li>
                     <li><a href="#" class="nav-link text-white"><i class="bi bi-signpost me-2"></i>Paradas</a></li>
                 </ul>
             </li>
@@ -49,15 +52,43 @@
 </div>
 
 <script>
-    $(document).ready(function(){
-        $(".menu-toggle").on("click", function(e){
-            e.preventDefault();
-            let submenu = $(this).next(".submenu");
-            let icone = $(this).find(".icone");
-            
-            submenu.toggleClass("d-none d-block");
-            icone.toggleClass("bi-chevron-right bi-chevron-down");
-        });
+    // Forçar navegação via JavaScript se o clique falhar
+    document.addEventListener('DOMContentLoaded', function() {
+        // Toggle do Menu
+        const btnCadastros = document.getElementById('btn-cadastros');
+        const submenu = document.getElementById('submenu-cadastros');
+        const icone = btnCadastros ? btnCadastros.querySelector('.icone') : null;
+
+        if (btnCadastros && submenu) {
+            btnCadastros.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                if (submenu.classList.contains('d-none')) {
+                    submenu.classList.remove('d-none');
+                    submenu.classList.add('d-block');
+                    if (icone) {
+                        icone.classList.remove('bi-chevron-right');
+                        icone.classList.add('bi-chevron-down');
+                    }
+                } else {
+                    submenu.classList.remove('d-block');
+                    submenu.classList.add('d-none');
+                    if (icone) {
+                        icone.classList.remove('bi-chevron-down');
+                        icone.classList.add('bi-chevron-right');
+                    }
+                }
+            });
+        }
+
+        // Forçar link de Avisos
+        const linkAvisos = document.getElementById('link-avisos-fixo');
+        if (linkAvisos) {
+            linkAvisos.addEventListener('click', function(e) {
+                console.log('Redirecionando para avisos...');
+                window.location.href = '/avisos/create';
+            });
+        }
     });
 </script>
 </body>
