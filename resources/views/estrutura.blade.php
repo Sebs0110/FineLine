@@ -41,15 +41,11 @@
                     <li><a href="#" class="nav-link text-white"><i class="bi bi-calendar-check me-2"></i>Itinerários</a></li>
                     <li><a href="/avisos" class="nav-link text-white" id="link-avisos-fixo"><i class="bi bi-cone-striped me-2"></i>Avisos</a></li>
                     <li><a href="#" class="nav-link text-white"><i class="bi bi-signpost me-2"></i>Paradas</a></li>
-                    <li><a href="{{ route('usuarios.index') }}" class="nav-link text-white"><i class="bi bi-person me-2"></i>Usuários</a></li>
                 </ul>
             </li>
         </ul>
     </div>
     <!-- Conteúdo -->
-
-    <div class="p-4 text-white" style="flex: 1; min-height: 100vh;">
-
     <div class="p-4 text-white w-100">
         @yield('content')
     </div>
