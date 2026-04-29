@@ -16,10 +16,8 @@
 
         <div class="card bg-dark text-white border-secondary" style="max-width: 600px;">
             <div class="card-body">
-                {{-- A rota de update precisa do ID do usuário ($usuario->usu_id) --}}
                 <form action="{{ route('usuarios.update', $usuario->usu_id) }}" method="POST">
                     @csrf
-                    {{-- Diretiva obrigatória para o Laravel entender que é uma ATUALIZAÇÃO --}}
                     @method('PUT')
 
                     <div class="mb-3">
@@ -38,6 +36,23 @@
                         <small class="text-muted">Preencha apenas se desejar alterar a senha.</small>
                     </div>
 
+                    <!-- INÍCIO DOS CAMPOS DE MOTORISTA (ADICIONADOS AQUI) -->
+                    <hr class="border-secondary my-4">
+                    <h4 class="text-warning mb-3">Dados de Motorista (Opcional)</h4>
+
+                    <div class="mb-3">
+                        <label for="mot_numerocarteira" class="form-label">Número da CNH</label>
+                        <input type="text" class="form-control bg-secondary text-white border-0" id="mot_numerocarteira" name="mot_numerocarteira"
+                               value="{{ old('mot_numerocarteira', $usuario->motorista->mot_numerocarteira ?? '') }}" placeholder="Ex: 12345678900">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="mot_validade" class="form-label">Validade da CNH</label>
+                        <input type="date" class="form-control bg-secondary text-white border-0" id="mot_validade" name="mot_validade"
+                               value="{{ old('mot_validade', isset($usuario->motorista->mot_validade) ? \Carbon\Carbon::parse($usuario->motorista->mot_validade)->format('Y-m-d') : '') }}">
+                    </div>
+                    <!-- FIM DOS CAMPOS DE MOTORISTA -->
+
                     <div class="d-flex justify-content-between align-items-center mt-4">
                         <a href="{{ route('usuarios.index') }}" class="text-white text-decoration-none">
                             <i class="bi bi-arrow-left"></i> Cancelar
@@ -49,4 +64,3 @@
         </div>
     </div>
 @endsection
-

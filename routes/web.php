@@ -16,3 +16,7 @@ use App\Http\Controllers\UserController;
 Route::resource('usuarios', UserController::class);
 
 //ce69051 (Implementação do CRUD de usuários)
+
+use App\Http\Controllers\MotoristaController;
+
+Route::resource('motoristas', MotoristaController::class);

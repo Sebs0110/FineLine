@@ -46,20 +46,25 @@ class UserController extends Controller
         return view('usuarios.show', compact('usuario'));
     }
 
-    //Mostra a tela para alterar dados
+    // --- ALTERAÇÃO AQUI: Carrega o motorista junto com o usuário ---
     public function edit(User $usuario)
     {
+        $usuario->load('motorista'); // Isso permite que a View veja os dados da CNH
         return view('usuarios.edit', compact('usuario'));
     }
 
-    // Salva as alterações feitas na edição
+    // --- ALTERAÇÃO AQUI: Salva os dados do usuário E do motorista ---
     public function update(Request $request, User $usuario)
     {
         $request->validate([
             'usu_nome' => 'required|string|max:300',
             'usu_email' => 'required|string|email|max:255|unique:usuarios,usu_email,' . $usuario->usu_id . ',usu_id',
+            // Validações para os campos de motorista (opcionais)
+            'mot_numerocarteira' => 'nullable|string|max:20',
+            'mot_validade' => 'nullable|date',
         ]);
 
+        // Atualiza dados básicos do usuário
         $usuario->update([
             'usu_nome' => $request->usu_nome,
             'usu_email' => $request->usu_email,
@@ -69,7 +74,18 @@ class UserController extends Controller
             $usuario->update(['usu_senha' => Hash::make($request->usu_senha)]);
         }
 
-        return redirect()->route('usuarios.index')->with('success', 'Usuário atualizado!');
+        // Lógica Inteligente: Se preencheu a CNH, salva ou cria o registro de motorista
+        if ($request->filled('mot_numerocarteira')) {
+            $usuario->motorista()->updateOrCreate(
+                ['mot_usuario_id' => $usuario->usu_id],
+                [
+                    'mot_numerocarteira' => $request->mot_numerocarteira,
+                    'mot_validade' => $request->mot_validade
+                ]
+            );
+        }
+
+        return redirect()->route('usuarios.index')->with('success', 'Usuário e dados de motorista atualizados!');
     }
 
     //  Remove o usuário do banco
