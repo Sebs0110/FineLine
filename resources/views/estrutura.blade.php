@@ -33,9 +33,10 @@
                 </a>
 
                 <ul class="nav flex-column d-none ms-3 submenu" id="submenu-cadastros">
+                    <li><a href="{{ route('usuarios.index') }}" class="nav-link text-white"><i class="bi bi-people me-2"></i>Usuários</a></li>
                     <li><a href="#" class="nav-link text-white"><i class="bi bi-person me-2"></i>Passageiros</a></li>
                     <li><a href="#" class="nav-link text-white"><i class="bi bi-building me-2"></i>Empresas</a></li>
-                    <li><a href="#" class="nav-link text-white"><i class="bi bi-car-front me-2"></i>Motoristas</a></li>
+                    <li><a href="{{ route('motoristas.index') }}" class="nav-link text-white"><i class="bi bi-car-front me-2"></i>Motoristas</a></li>
                     <li><a href="#" class="nav-link text-white"><i class="bi bi-bus-front me-2"></i>Ônibus</a></li>
                     <li><a href="#" class="nav-link text-white"><i class="bi bi-sign-turn-right me-2"></i>Rotas</a></li>
                     <li><a href="#" class="nav-link text-white"><i class="bi bi-calendar-check me-2"></i>Itinerários</a></li>
