@@ -8,7 +8,9 @@ Route::get('/', function () {
     return view('estrutura');
 });
 
-Route::resource('onibus', OnibusController::class);
+Route::resource('onibus', OnibusController::class)->parameters([
+    'onibus' => 'onibus'
+]);
 
 
 Route::resource('avisos', AvisoController::class);
