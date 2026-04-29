@@ -38,4 +38,15 @@ class User extends Authenticatable
             'usu_senha' => 'hashed', // garantia de senha criptografada
         ];
     }
+
+    // RELACIONAMENTOS (Agora dentro da classe)
+    public function motorista()
+    {
+        return $this->hasOne(Motorista::class, 'mot_usuario_id', 'usu_id');
+    }
+
+    public function passageiro()
+    {
+        return $this->hasOne(Passageiro::class, 'pas_usuario_id', 'usu_id');
+    }
 }
