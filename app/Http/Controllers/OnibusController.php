@@ -31,7 +31,7 @@ class OnibusController extends Controller
             'oni_modelo.max' => 'O modelo não pode ter mais de 35 caracteres.',
         ]);
 
-        Onibus::create($validated);
+        Onibus::create($request->all());
 
         return redirect()->route('onibus.index')
             ->with('success', 'Ônibus cadastrado com sucesso!');

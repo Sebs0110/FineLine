@@ -81,7 +81,9 @@
                         </table>
                     </div>
                 @else
-
+                    <div class="alert alert-info" role="alert">
+                        <i class="bi bi-info-circle me-2"></i>Nenhum ônibus cadastrado. <a href="{{ route('onibus.create') }}" class="alert-link">Clique aqui para cadastrar.</a>
+                    </div>
                 @endif
             </div>
         </div>

@@ -9,6 +9,6 @@ class Onibus extends Model {
     use HasFactory;
     protected $table = 'onibus';
     protected $primaryKey = 'oni_id';
-    protected $fillable = ['oni_placa','oni_renavam', 'oni_modelo'];
+    protected $fillable = ['oni_placa','oni_renavan', 'oni_modelo'];
 
 }
