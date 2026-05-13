@@ -1,6 +1,5 @@
 import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
-import inject from '@rollup/plugin-inject';
 
 export default defineConfig({
     plugins: [
@@ -11,17 +10,5 @@ export default defineConfig({
             ],
             refresh: true,
         }),
-        inject({
-            $: 'jquery',
-            jQuery: 'jquery',
-        }),
     ],
-    css: {
-        preprocessorOptions: {
-            scss: {
-                quietDeps: true,
-                silenceDeprecations: ['import', 'global-builtin', 'color-functions', 'if-function', 'mixed-decls'],
-            },
-        },
-    },
 });

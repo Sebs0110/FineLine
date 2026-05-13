@@ -8,20 +8,19 @@ Route::get('/', function () {
     return view('estrutura');
 });
 
-Route::resource('onibus', OnibusController::class)->parameters([
-    'onibus' => 'onibus'
-]);
+Route::middleware(['auth'])->group(function () {
+    Route::resource('onibus', OnibusController::class)->parameters([
+        'onibus' => 'onibus'
+    ]);
 
+    Route::resource('avisos', AvisoController::class);
 
-Route::resource('avisos', AvisoController::class);
+    //cria as 7 rotas que o usercontroller precisa
+    Route::resource('usuarios', UserController::class);
 
-use App\Http\Controllers\UserController;
+    Route::resource('motoristas', MotoristaController::class);
+});
 
-//cria as 7 rotas que o usercontroller precisa
-Route::resource('usuarios', UserController::class);
+Auth::routes();
 
-//ce69051 (Implementação do CRUD de usuários)
-
-use App\Http\Controllers\MotoristaController;
-
-Route::resource('motoristas', MotoristaController::class);
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

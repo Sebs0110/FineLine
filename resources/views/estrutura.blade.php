@@ -27,6 +27,7 @@
     <div class="text-white vh-100 p-3" style="width: 220px; background-color: #13293A; position: sticky; top: 0;">
         <h3 class="text-warning">FineLine</h3>
         <ul class="nav flex-column">
+            @auth
             <li class="nav-item">
                 <a href="javascript:void(0)" class="nav-link text-white menu-toggle" id="btn-cadastros">
                     <i class="bi bi-chevron-right me-1 icone"></i>Cadastros
@@ -44,6 +45,29 @@
                     <li><a href="#" class="nav-link text-white"><i class="bi bi-signpost me-2"></i>Paradas</a></li>
                 </ul>
             </li>
+            <li class="nav-item mt-3">
+                <a class="nav-link text-white" href="{{ route('logout') }}"
+                   onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    <i class="bi bi-box-arrow-right me-2"></i>Sair
+                </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
+            </li>
+            @else
+            <li class="nav-item">
+                <a href="{{ route('login') }}" class="nav-link text-white">
+                    <i class="bi bi-box-arrow-in-right me-2"></i>Login
+                </a>
+            </li>
+            @if (Route::has('register'))
+            <li class="nav-item">
+                <a href="{{ route('register') }}" class="nav-link text-white">
+                    <i class="bi bi-person-plus me-2"></i>Registrar
+                </a>
+            </li>
+            @endif
+            @endauth
         </ul>
     </div>
     <!-- Conteúdo -->

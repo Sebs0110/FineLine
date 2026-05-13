@@ -39,6 +39,26 @@ class User extends Authenticatable
         ];
     }
 
+    /**
+     * Get the password for the user.
+     *
+     * @return string
+     */
+    public function getAuthPassword()
+    {
+        return $this->usu_senha;
+    }
+
+    /**
+     * Get the name of the unique identifier for the user.
+     *
+     * @return string
+     */
+    public function getAuthIdentifierName()
+    {
+        return 'usu_id';
+    }
+
     // RELACIONAMENTOS (Agora dentro da classe)
     public function motorista()
     {
