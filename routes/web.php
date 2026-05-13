@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\OnibusController;
 use App\Http\Controllers\AvisoController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\MotoristaController;
 
 Route::get('/', function () {
     return view('estrutura');
@@ -23,4 +25,6 @@ Route::middleware(['auth'])->group(function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+});
