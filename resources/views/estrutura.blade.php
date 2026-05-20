@@ -42,7 +42,7 @@
                     <li><a href="#" class="nav-link text-white"><i class="bi bi-sign-turn-right me-2"></i>Rotas</a></li>
                     <li><a href="#" class="nav-link text-white"><i class="bi bi-calendar-check me-2"></i>Itinerários</a></li>
                     <li><a href="/avisos" class="nav-link text-white" id="link-avisos-fixo"><i class="bi bi-cone-striped me-2"></i>Avisos</a></li>
-                    <li><a href="#" class="nav-link text-white"><i class="bi bi-signpost me-2"></i>Paradas</a></li>
+                    <li><a href="{{ route('paradas.index') }}" class="nav-link text-white"><i class="bi bi-signpost me-2"></i>Paradas</a></li>
                 </ul>
             </li>
             <li class="nav-item mt-3">
