@@ -7,6 +7,9 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.png">
+
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Fonts -->
