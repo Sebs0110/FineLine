@@ -13,10 +13,17 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // Aqui inserimos os tipos de usuário necessários para o banco não dar erro
-        DB::table('tiposusuarios')->insert([
+        $tipos = [
             ['tus_id' => 1, 'tus_nome' => 'Administrador'],
             ['tus_id' => 2, 'tus_nome' => 'Passageiro'],
             ['tus_id' => 3, 'tus_nome' => 'Motorista'],
-        ]);
+        ];
+
+        foreach ($tipos as $tipo) {
+            DB::table('tiposusuarios')->updateOrInsert(
+                ['tus_id' => $tipo['tus_id']],
+                ['tus_nome' => $tipo['tus_nome'], 'created_at' => now(), 'updated_at' => now()]
+            );
+        }
     }
 }
