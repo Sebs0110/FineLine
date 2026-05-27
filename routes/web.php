@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\MotoristaController;
 use App\Http\Controllers\ParadaController;
 use App\Http\Controllers\RotaController;
+use App\Http\Controllers\ItinerarioController;
 
 Route::get('/', function () {
     return view('estrutura');
@@ -20,6 +21,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('motoristas', MotoristaController::class);
     Route::resource('paradas', ParadaController::class);
     Route::resource('rotas', RotaController::class);
+    Route::resource('itinerarios', ItinerarioController::class);
 });
 
 Auth::routes();
